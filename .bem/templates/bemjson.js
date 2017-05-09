@@ -8,12 +8,11 @@ module.exports = function (entity, naming) {
         "    block: 'page',",
         "    title: 'Page " + entity.block + "',",
         "    head: [",
-        "        { elem: 'meta', attrs: { name: 'description', content: '' } },",
         "        { elem: 'meta', attrs: { name: 'viewport', content: 'width=device-width, initial-scale=1' } },",
+        "        { elem: 'meta', attrs: { name: 'description', content: '' } },",
         "        { elem: 'css', url: '" + entity.block + ".min.css' }",
         "    ],",
         "    scripts: [{ elem: 'js', url: '" + entity.block + ".min.js' }],",
-        "    mods: { theme: 'islands' },",
         "    content: []",
         "};",
         ""

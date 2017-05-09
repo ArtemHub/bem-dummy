@@ -7,6 +7,8 @@ const htmlbeautify = require('gulp-html-beautify');
 const replace = require('gulp-replace');
 const rename = require("gulp-rename");
 const shell = require('gulp-shell');
+const server = require('gulp-express');
+
 
 gulp.task('rm-dist', function() {
     return del('dist');
@@ -49,4 +51,23 @@ gulp.task('make', shell.task([
     'YENV=production node_modules/enb/bin/enb make'
 ]));
 
+
+gulp.task('make', shell.task([
+    'node_modules/enb/bin/enb make clean',
+    'YENV=production node_modules/enb/bin/enb make'
+]));
+
+
 gulp.task('dist', gulp.series('rm-dist', 'mkdir-dist', 'make', 'css', 'js', 'html'));
+
+
+// ------------------
+
+gulp.task('serv', function () {
+    server.run(['.express/app.js']);
+
+    var watcher = gulp.watch('.express/**/*.*');
+    watcher.on('change', function(path, stat) {
+        server.run(['.express/app.js']);
+    });
+});

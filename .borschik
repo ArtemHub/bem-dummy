@@ -1,6 +1,6 @@
 {
     "freeze_paths" : {
         "blocks/**": "./dist/images/",
-        "src/**": "./dist/images/"
+        "src/images/**": "./dist/images/"
     }
 }
